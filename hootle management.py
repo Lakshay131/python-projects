@@ -4,12 +4,12 @@ def entry():
     print("2.Calculate rommrent")
     print("3.Calculate restaurant bill")
     print("4.Calculate laundry bill")
-    print("5.Calculate gamebill")
-    print("6.Show total cost")
-    print("7.EXIT")
+    print("5.Show total cost")
+    print("6.EXIT")
     
 
 def customer_data():
+     global name, stay
      name = input("ENTER CUSTOMER NAME: ")
      stay = int(input("ENTER HOW MANY DAYS CUSTOMER WANT: "))
      rooms()
@@ -26,24 +26,56 @@ def rooms():
     days = int(input('HOW MANY DAYS DO YOU WANT: '))
 
 def cafe():
+     global restaurant_bill
      print("-----WELCOME TO OUR CAFE-----")
-     menu = [
-    ("1. Coffee : 30"),
-    ("2. Maggie : 50"),
-    ("3. Burger : 60"),
-    ("4. Tea : 20"),
-    ("5. Bun Maska : 10"),
-    ]
-     print(menu)
-     items = int(input("WHAT DO YOU WANT TO ORDER? :"))
-     menu_total = 
-     
+     print("1. TEA : ₹20")
+     print("2. COFFEE : ₹30")
+     print("3. SANDWICH : ₹50")
+     print("4. BREAKFAST : ₹90")
+     print("5. LUNCH : ₹110")
+     print("6. DINNER : ₹150")
+     tea = coffee = bf = lunch = dinner = 0
 
+     order = input("Do you want Tea? (yes/no): ").lower()
+     if order == "yes":
+            tea = int(input("HOW MANY TEA? "))
+     else:
+             tea = 0
+
+     order = input("Do you want Coffee? (yes/no): ").lower()
+     if order == "yes":
+                   coffee = int(input("HOW MANY COFFEE? "))
+     else:
+            coffee = 0
+
+     order =  input("Do you want Breakfast? (yes/no): ").lower()
+     if order == "yes":
+           bf = int(input("HOW MANY BREAKFASTS? "))
+     else:
+           bf = 0
+
+     order = input("Do you want Lunch? (yes/no): ").lower()
+     if order == "yes":
+           lunch = int(input("HOW MANY LUNCHES? "))
+     else:
+           lunch = 0
+
+     order = input("Do you want Dinner? (yes/no): ").lower()
+     if order == "yes":
+             dinner = int(input("HOW MANY DINNERS? "))
+     else:
+          dinner = 0
+
+     restaurant_bill = tea * 10 + coffee * 20 + bf * 90 + lunch * 110 + dinner * 150
+     print("YOUR TOTAL RESTAURANT BILL IS: ₹", restaurant_bill)
+
+
+  
 def rrent():
         rooms()
         global roomrent
         if rchoice == 1:
-           roomrent = 6000*days
+             roomrent = 6000*days
         elif rchoice == 2:
              roomrent = 5000 * days
         elif rchoice == 3:
@@ -70,9 +102,22 @@ def laundry():
       laundry_bill = s*3 + t*4 + s*5 + j*6 + gs*8
       print("YOUR TOTAL WOULD BE : ₹", laundry_bill)
 
+def total_cost():
+        total = roomrent + laundry_bill + restaurant_bill
+        print("------HOTEL BILL------")
+        print("Customer name:", name)
+        print("Room rent: ₹", roomrent)
+        print("Restaurant bill: ₹", restaurant_bill)
+        print("Laundry bill: ₹", laundry_bill)
+        print("Total amount: ₹", total)
+        print("----------------------")
+
+
 name = ""
 
 roomrent = 0
+
+restaurant_bill = 0
 
 stay = 0
 
@@ -85,18 +130,48 @@ choice = 0
 days = 0
 
 def main():
-     entry()
-     choice = int(input("Enter your choice: "))
+     while True:
+      entry()
+      choice = int(input("Enter your choice: "))
 
-     if choice == 1:
-          customer_data()
-     elif choice == 2:
+      if choice == 1:
+            customer_data()
+            ask = input("DO YOU WANT TO CONTINUE (yes/no): ")
+            if ask == "yes":
+               continue
+            else:
+               quit()
+      elif choice == 2:
           rrent()
-     elif choice == 3:
+          ask = input("DO YOU WANT TO CONTINUE (yes/no): ")
+          if ask == "yes":
+               continue
+          else:
+               quit()
+      elif choice == 3:
           cafe()
-     elif choice == 4:
+          ask = input("DO YOU WANT TO CONTINUE (yes/no): ")
+          if ask == "yes":
+               continue
+          else:
+               quit()
+      elif choice == 4:
           laundry()
-     elif choice == 7:
+          ask = input("DO YOU WANT TO CONTINUE (yes/no): ")
+          if ask == "yes":
+               continue
+          else:
+               quit()
+      elif choice ==5 :
+          total_cost()
+          ask = input("DO YOU WANT TO CONTINUE (yes/no): ")
+          if ask == "yes":
+               continue
+          else:
+               quit()
+      elif choice == 6:
           quit()
+
+
 
 main()
