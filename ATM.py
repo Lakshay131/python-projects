@@ -11,7 +11,7 @@ def new_account():
     age = int(input("ENTER YOUR AGE: "))
     if age >= 18:
         pin = int(input("ENTER YOUR PIN OF 4 DIGIT: "))
-        print("PRINT YOUR ACCOUNT HAS BEEN CREATED.")
+        print("YOUR ACCOUNT HAS BEEN CREATED.")
     else:
         print("YOUR AGE IS BELOW 18, SO YOU CANT CREATE A ACCOUNT.")
 
